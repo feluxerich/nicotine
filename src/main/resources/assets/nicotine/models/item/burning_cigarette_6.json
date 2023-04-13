@@ -1,0 +1,6 @@
+{
+  "parent": "nicotine:item/cigarette",
+  "textures": {
+    "layer0": "nicotine:item/burning_cigarette_6"
+  }
+}

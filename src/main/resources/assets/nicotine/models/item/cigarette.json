@@ -1,0 +1,144 @@
+{
+  "parent": "item/generated",
+  "display": {
+    "thirdperson_righthand": {
+      "rotation": [
+        0,
+        -90,
+        0
+      ],
+      "translation": [
+        0,
+        -1.4,
+        -1.2
+      ],
+      "scale": [
+        0.3,
+        0.3,
+        0.3
+      ]
+    },
+    "thirdperson_lefthand": {
+      "rotation": [
+        0,
+        90,
+        0
+      ],
+      "translation": [
+        0,
+        -1.4,
+        -1.2
+      ],
+      "scale": [
+        0.3,
+        0.3,
+        0.3
+      ]
+    },
+    "firstperson_righthand": {
+      "rotation": [
+        0,
+        -90,
+        0
+      ],
+      "translation": [
+        0,
+        3,
+        2
+      ],
+      "scale": [
+        0.2,
+        0.2,
+        0.2
+      ]
+    },
+    "firstperson_lefthand": {
+      "rotation": [
+        0,
+        90,
+        0
+      ],
+      "translation": [
+        0,
+        3,
+        2
+      ],
+      "scale": [
+        0.2,
+        0.2,
+        0.2
+      ]
+    }
+  },
+  "textures": {
+    "layer0": "nicotine:item/cigarette"
+  },
+  "overrides": [
+    {
+      "predicate": {
+        "remaining": 0.0
+      },
+      "model": "nicotine:item/burning_cigarette_1"
+    },
+    {
+      "predicate": {
+        "remaining": 0.1
+      },
+      "model": "nicotine:item/burning_cigarette_2"
+    },
+    {
+      "predicate": {
+        "remaining": 0.2
+      },
+      "model": "nicotine:item/burning_cigarette_3"
+    },
+    {
+      "predicate": {
+        "remaining": 0.3
+      },
+      "model": "nicotine:item/burning_cigarette_4"
+    },
+    {
+      "predicate": {
+        "remaining": 0.4
+      },
+      "model": "nicotine:item/burning_cigarette_5"
+    },
+    {
+      "predicate": {
+        "remaining": 0.5
+      },
+      "model": "nicotine:item/burning_cigarette_6"
+    },
+    {
+      "predicate": {
+        "remaining": 0.6
+      },
+      "model": "nicotine:item/burning_cigarette_7"
+    },
+    {
+      "predicate": {
+        "remaining": 0.7
+      },
+      "model": "nicotine:item/burning_cigarette_8"
+    },
+    {
+      "predicate": {
+        "remaining": 0.8
+      },
+      "model": "nicotine:item/burning_cigarette_9"
+    },
+    {
+      "predicate": {
+        "remaining": 0.9
+      },
+      "model": "nicotine:item/burning_cigarette_10"
+    },
+    {
+      "predicate": {
+        "remaining": 1.0
+      },
+      "model": "nicotine:item/cigarette"
+    }
+  ]
+}

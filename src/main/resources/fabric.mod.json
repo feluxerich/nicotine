@@ -1,0 +1,37 @@
+{
+	"schemaVersion": 1,
+	"id": "nicotine",
+	"version": "${version}",
+	"name": "nicotine",
+	"description": "With this mod even Snoop Dogg and Helmut Schmidt would like to play Minecraft",
+	"authors": [
+		"feluxerich"
+	],
+	"contact": {
+		"homepage": "https://fluxi.dev/",
+		"sources": "https://github.com/feluxerich/nicotine"
+	},
+	"license": "CC0-1.0",
+	"icon": "assets/nicotine/icon.png",
+	"environment": "*",
+	"entrypoints": {
+		"main": [
+			"dev.fluxi.NicotineMod"
+		],
+		"client": [
+			"dev.fluxi.NicotineClientMod"
+		]
+	},
+	"mixins": [
+		"nicotine.mixins.json"
+	],
+	"depends": {
+		"fabricloader": ">=0.14.19",
+		"minecraft": "~1.19.4",
+		"java": ">=17",
+		"fabric-api": "*"
+	},
+	"suggests": {
+		"another-mod": "*"
+	}
+}
