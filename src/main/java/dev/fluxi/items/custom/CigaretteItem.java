@@ -1,4 +1,4 @@
-package dev.fluxi.items;
+package dev.fluxi.items.custom;
 
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
@@ -20,6 +20,6 @@ public class CigaretteItem extends Item {
             return TypedActionResult.fail(itemStack);
         }
         itemStack.damage(1, user, playerEntity -> {});
-        return TypedActionResult.success(itemStack, false);
+        return TypedActionResult.success(itemStack);
     }
 }
