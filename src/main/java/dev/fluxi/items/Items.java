@@ -10,8 +10,13 @@ import net.minecraft.util.Rarity;
 
 public class Items {
     public static Item CIGARETTE = null;
+    public static Item ROLLING_PAPER = null;
+    public static Item ACTIVATED_CHARCOAL_FILTER = null;
+
     public static void registerAll() {
         CIGARETTE = register("cigarette", new CigaretteItem(new FabricItemSettings().rarity(Rarity.UNCOMMON).maxDamage(10)));
+        ROLLING_PAPER = register("rolling_paper", new Item(new FabricItemSettings()));
+        ACTIVATED_CHARCOAL_FILTER = register("activated_charcoal_filter", new Item(new FabricItemSettings()));
     }
 
     private static Item register(String identifier, Item item) {
