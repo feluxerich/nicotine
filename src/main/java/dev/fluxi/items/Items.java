@@ -17,6 +17,7 @@ public class Items {
     public static Item FILTER_TIP_PAPER = null;
     public static Item FILTER_TIP = null;
     public static Item FILTER = null;
+    public static Item CUT_TOBACCO = null;
 
     public static void registerAll() {
         CIGARETTE = register("cigarette", new CigaretteItem(new FabricItemSettings().rarity(Rarity.UNCOMMON).maxDamage(10)));
@@ -25,6 +26,7 @@ public class Items {
         FILTER_TIP_PAPER = register("filter_tip_paper", new FilterTipPaperItem(new FabricItemSettings().maxCount(1)));
         FILTER_TIP = register("filter_tip", new Item(new FabricItemSettings()));
         FILTER = register("filter", new Item(new FabricItemSettings()));
+        CUT_TOBACCO = register("cut_tobacco", new Item(new FabricItemSettings()));
     }
 
     private static Item register(String identifier, Item item) {
