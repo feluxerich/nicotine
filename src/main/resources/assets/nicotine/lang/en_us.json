@@ -1,7 +1,11 @@
 {
+  "itemGroup.nicotine.main": "Nicotine",
+
   "item.nicotine.cigarette": "Cigarette",
   "item.nicotine.rolling_paper": "Rolling Paper",
   "item.nicotine.activated_charcoal_filter": "Activated Charcoal Filter",
   "item.nicotine.filter_tip_paper": "Filter Tip Paper",
-  "item.nicotine.filter_tip": "Filter Tip"
+  "item.nicotine.filter_tip": "Filter Tip",
+  "item.nicotine.filter": "Filter",
+  "item.nicotine.cut_tobacco": "Cut Tobacco"
 }
