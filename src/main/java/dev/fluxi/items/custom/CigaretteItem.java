@@ -22,4 +22,9 @@ public class CigaretteItem extends Item {
         itemStack.damage(1, user, playerEntity -> {});
         return TypedActionResult.success(itemStack);
     }
+
+    @Override
+    public boolean isItemBarVisible(ItemStack stack) {
+        return false;
+    }
 }
