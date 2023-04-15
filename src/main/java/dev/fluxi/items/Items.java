@@ -16,6 +16,7 @@ public class Items {
     public static Item ACTIVATED_CHARCOAL_FILTER = null;
     public static Item FILTER_TIP_PAPER = null;
     public static Item FILTER_TIP = null;
+    public static Item FILTER = null;
 
     public static void registerAll() {
         CIGARETTE = register("cigarette", new CigaretteItem(new FabricItemSettings().rarity(Rarity.UNCOMMON).maxDamage(10)));
@@ -23,6 +24,7 @@ public class Items {
         ACTIVATED_CHARCOAL_FILTER = register("activated_charcoal_filter", new Item(new FabricItemSettings()));
         FILTER_TIP_PAPER = register("filter_tip_paper", new FilterTipPaperItem(new FabricItemSettings().maxCount(1)));
         FILTER_TIP = register("filter_tip", new Item(new FabricItemSettings()));
+        FILTER = register("filter", new Item(new FabricItemSettings()));
     }
 
     private static Item register(String identifier, Item item) {
