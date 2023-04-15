@@ -14,10 +14,7 @@ public class NicotineClientMod implements ClientModInitializer {
         ModelPredicateProviderRegistry.register(
                 Items.CIGARETTE,
                 new Identifier("remaining"),
-                (itemStack, clientWorld, livingEntity, i) -> {
-                    NicotineMod.LOGGER.info(String.valueOf((itemStack.getMaxDamage() - itemStack.getDamage()) / 10F));
-                    return (itemStack.getMaxDamage() - itemStack.getDamage()) / 10F;
-                }
+                (itemStack, clientWorld, livingEntity, i) -> (itemStack.getMaxDamage() - itemStack.getDamage()) / 10F
         );
     }
 }
