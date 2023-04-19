@@ -1,5 +1,6 @@
 package dev.fluxi;
 
+import dev.fluxi.blocks.Blocks;
 import dev.fluxi.items.Items;
 import net.fabricmc.api.ModInitializer;
 
@@ -12,7 +13,7 @@ public class NicotineMod implements ModInitializer {
 
 	@Override
 	public void onInitialize() {
-		LOGGER.info("Hello Fabric world!");
-		Items.registerAll();
+		Items.registerItems();
+		Blocks.registerBlocks();
 	}
 }

@@ -26,7 +26,7 @@ public class Items {
     public static Item FILTER = null;
     public static Item CUT_TOBACCO = null;
 
-    public static void registerAll() {
+    public static void registerItems() {
         CIGARETTE = register("cigarette", new CigaretteItem(new FabricItemSettings().rarity(Rarity.UNCOMMON).maxDamage(10)));
         ROLLING_PAPER = register("rolling_paper", new Item(new FabricItemSettings()));
         ACTIVATED_CHARCOAL_FILTER = register("activated_charcoal_filter", new Item(new FabricItemSettings()));
@@ -36,7 +36,7 @@ public class Items {
         CUT_TOBACCO = register("cut_tobacco", new Item(new FabricItemSettings()));
     }
 
-    private static Item register(String identifier, Item item) {
+    public static Item register(String identifier, Item item) {
         ItemGroupEvents.modifyEntriesEvent(Items.ITEM_GROUP).register(content -> content.add(item));
         return Registry.register(Registries.ITEM, new Identifier(NicotineMod.MOD_ID, identifier), item);
     }
