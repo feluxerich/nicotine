@@ -21,7 +21,7 @@ public class TobaccoPlantBlock extends PlantBlock implements Fertilizable {
             Block.createCuboidShape(0, 0, 0, 16, 8, 16),
     };
     public static final int MAX_AGE = 9;
-    public static final IntProperty AGE = IntProperty.of("stage", 0, MAX_AGE);
+    public static final IntProperty AGE = IntProperty.of("age", 0, MAX_AGE);
 
 
     public TobaccoPlantBlock(Settings settings) {
@@ -44,7 +44,7 @@ public class TobaccoPlantBlock extends PlantBlock implements Fertilizable {
 
     @Override
     public boolean isFertilizable(WorldView world, BlockPos pos, BlockState state, boolean isClient) {
-        return true;
+        return state.get(AGE) < MAX_AGE;
     }
 
     @Override
@@ -55,5 +55,21 @@ public class TobaccoPlantBlock extends PlantBlock implements Fertilizable {
     @Override
     public void grow(ServerWorld world, Random random, BlockPos pos, BlockState state) {
         world.setBlockState(pos, state.with(AGE, state.get(AGE) + 1));
+    }
+
+    @Override
+    protected boolean canPlantOnTop(BlockState floor, BlockView world, BlockPos pos) {
+        return floor.isOf(Blocks.FARMLAND);
+    }
+
+    @Override
+    public boolean hasRandomTicks(BlockState state) {
+        return true;
+    }
+
+    @Override
+    public void randomTick(BlockState state, ServerWorld world, BlockPos pos, Random random) {
+        if (!canGrow(world, random, pos, state)) return;
+        grow(world, random, pos, state);
     }
 }
