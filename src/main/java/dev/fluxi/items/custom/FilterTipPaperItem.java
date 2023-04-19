@@ -1,6 +1,6 @@
 package dev.fluxi.items.custom;
 
-import dev.fluxi.items.Items;
+import dev.fluxi.items.ModItems;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
@@ -22,7 +22,7 @@ public class FilterTipPaperItem extends Item {
 
     @Override
     public ItemStack finishUsing(ItemStack stack, World world, LivingEntity user) {
-        return new ItemStack(Items.FILTER_TIP);
+        return new ItemStack(ModItems.FILTER_TIP);
     }
 
     @Override

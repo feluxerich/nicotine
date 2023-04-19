@@ -1,75 +1,90 @@
 package dev.fluxi.blocks.custom;
 
+import dev.fluxi.items.ModItems;
 import net.minecraft.block.*;
-import net.minecraft.server.world.ServerWorld;
+import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemConvertible;
+import net.minecraft.item.ItemStack;
+import net.minecraft.item.Items;
+import net.minecraft.registry.tag.BlockTags;
 import net.minecraft.state.StateManager;
 import net.minecraft.state.property.IntProperty;
+import net.minecraft.util.ActionResult;
+import net.minecraft.util.Hand;
+import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.random.Random;
 import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
-import net.minecraft.world.WorldView;
 
 
-public class TobaccoPlantBlock extends PlantBlock implements Fertilizable {
-    private static final VoxelShape[] SHAPES = new VoxelShape[]{
+public class TobaccoPlantBlock extends CropBlock {
+    public static final int MAX_AGE = 9;
+    public static final IntProperty AGE = IntProperty.of("age", 0, MAX_AGE);
+    private static final VoxelShape[] AGE_TO_SHAPE = new VoxelShape[]{
             Block.createCuboidShape(7, 0, 7, 9, 2, 9),
             Block.createCuboidShape(7, 0, 7, 9, 4, 9),
             Block.createCuboidShape(7, 0, 7, 9, 6, 9),
             Block.createCuboidShape(7, 0, 7, 9, 8, 9),
             Block.createCuboidShape(0, 0, 0, 16, 8, 16),
     };
-    public static final int MAX_AGE = 9;
-    public static final IntProperty AGE = IntProperty.of("age", 0, MAX_AGE);
-
 
     public TobaccoPlantBlock(Settings settings) {
         super(settings);
-        setDefaultState(getDefaultState().with(AGE, 0));
     }
 
     @Override
     public VoxelShape getOutlineShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
-        if (state.get(AGE) > SHAPES.length - 1) {
-            return SHAPES[SHAPES.length - 1];
+        if (state.get(AGE) > AGE_TO_SHAPE.length - 1) {
+            return AGE_TO_SHAPE[AGE_TO_SHAPE.length - 1];
         }
-        return SHAPES[state.get(AGE)];
+        return AGE_TO_SHAPE[state.get(AGE)];
+    }
+
+    @Override
+    public IntProperty getAgeProperty() {
+        return AGE;
+    }
+
+    @Override
+    public int getMaxAge() {
+        return MAX_AGE;
+    }
+
+    @Override
+    protected ItemConvertible getSeedsItem() {
+        return ModItems.TOBACCO_SEEDS;
     }
 
     @Override
     protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
-        builder.add(AGE);
+        builder.add(getAgeProperty());
     }
 
     @Override
-    public boolean isFertilizable(WorldView world, BlockPos pos, BlockState state, boolean isClient) {
-        return state.get(AGE) < MAX_AGE;
+    public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
+        ItemStack itemStack = player.getStackInHand(hand);
+        int age = state.get(AGE);
+        if (!itemStack.isOf(Items.SHEARS) || age <= 3) {
+            return ActionResult.FAIL;
+        }
+        if (!player.isCreative()) {
+            itemStack.damage(1, player, (ServerPlayerEntity) -> {});
+        }
+        ItemStack dropItemStack = new ItemStack(getHarvestItem());
+        dropItemStack.setCount(age - 3);
+        world.setBlockState(pos, state.with(AGE, 3));
+        dropStack(world, pos, dropItemStack);
+        return ActionResult.SUCCESS;
     }
 
-    @Override
-    public boolean canGrow(World world, Random random, BlockPos pos, BlockState state) {
-        return state.get(AGE) < MAX_AGE;
-    }
-
-    @Override
-    public void grow(ServerWorld world, Random random, BlockPos pos, BlockState state) {
-        world.setBlockState(pos, state.with(AGE, state.get(AGE) + 1));
+    public Item getHarvestItem() {
+        return ModItems.CUT_TOBACCO; // TODO: Make this to a normal tobacco leaf
     }
 
     @Override
     protected boolean canPlantOnTop(BlockState floor, BlockView world, BlockPos pos) {
-        return floor.isOf(Blocks.FARMLAND);
-    }
-
-    @Override
-    public boolean hasRandomTicks(BlockState state) {
-        return true;
-    }
-
-    @Override
-    public void randomTick(BlockState state, ServerWorld world, BlockPos pos, Random random) {
-        if (!canGrow(world, random, pos, state)) return;
-        grow(world, random, pos, state);
+        return floor.isIn(BlockTags.DIRT);
     }
 }

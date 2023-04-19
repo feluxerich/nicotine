@@ -1,7 +1,7 @@
 package dev.fluxi;
 
-import dev.fluxi.blocks.Blocks;
-import dev.fluxi.items.Items;
+import dev.fluxi.blocks.ModBlocks;
+import dev.fluxi.items.ModItems;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
@@ -14,10 +14,10 @@ import net.minecraft.util.Identifier;
 public class NicotineClientMod implements ClientModInitializer {
     @Override
     public void onInitializeClient() {
-        BlockRenderLayerMap.INSTANCE.putBlock(Blocks.TOBACCO_PLANT, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.TOBACCO_PLANT, RenderLayer.getCutout());
 
         ModelPredicateProviderRegistry.register(
-                Items.CIGARETTE,
+                ModItems.CIGARETTE,
                 new Identifier("remaining"),
                 (itemStack, clientWorld, livingEntity, i) -> (itemStack.getMaxDamage() - itemStack.getDamage()) / 10F
         );
