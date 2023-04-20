@@ -15,7 +15,6 @@ public class NicotineClientMod implements ClientModInitializer {
     @Override
     public void onInitializeClient() {
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.TOBACCO_PLANT, RenderLayer.getCutout());
-        BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.GRATING, RenderLayer.getCutout());
 
         ModelPredicateProviderRegistry.register(
                 ModItems.CIGARETTE,
