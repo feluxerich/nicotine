@@ -9,7 +9,8 @@
     },
     "textures": {
         "particle": "block/campfire_log",
-        "log": "block/campfire_log"
+        "log": "block/campfire_log",
+        "grating": "block/grating"
     },
     "elements": [
         {
