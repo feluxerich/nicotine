@@ -1,6 +1,7 @@
 package dev.fluxi.blocks;
 
 import dev.fluxi.NicotineMod;
+import dev.fluxi.blocks.custom.GratingBlock;
 import dev.fluxi.blocks.custom.TobaccoPlantBlock;
 import dev.fluxi.items.ModItems;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
@@ -13,7 +14,8 @@ import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
 
 public class ModBlocks {
-    public static Block TOBACCO_PLANT = register("tobacco_plant", new TobaccoPlantBlock(FabricBlockSettings.of(Material.METAL).nonOpaque()));
+    public static Block TOBACCO_PLANT = register("tobacco_plant", new TobaccoPlantBlock(FabricBlockSettings.of(Material.PLANT).nonOpaque()));
+    public static Block GRATING = register("grating", new GratingBlock(FabricBlockSettings.of(Material.METAL).nonOpaque()), new FabricItemSettings());
 
     public static void registerBlocks() {
         NicotineMod.LOGGER.info("Initializing Mod Blocks");
