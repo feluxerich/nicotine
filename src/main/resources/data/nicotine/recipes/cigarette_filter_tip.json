@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "T ",
+    "PF"
+  ],
+  "key": {
+    "T": {
+      "item": "nicotine:cut_tobacco"
+    },
+    "F": {
+      "item": "nicotine:filter_tip"
+    },
+    "P": {
+      "item": "nicotine:rolling_paper"
+    }
+  },
+  "result": {
+    "item": "nicotine:cigarette",
+    "count": 1
+  }
+}
